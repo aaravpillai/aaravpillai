@@ -7,10 +7,15 @@ My practice focuses on examining how technology shapes the world we live in, and
 Outside of work, I enjoy reading philosophy, curating endless playlists, photographing beautiful places and people, and writing poetry. Feel free to get in touch if you would like to discuss a project, or just have a chat.
 
 🔭 I’m currently working on: redesigning healthcare services for learning disabled and autistic people
+
 🌱 I’m currently learning: p5.js for generative art
+
 👯 I’m looking to collaborate on: exploring techno-orientalism in science fiction films
+
 📫 Reach me via email: aarav@qinaraailab.org
 
 💬 Talk to me about: user research or creative AI
+
 ⚡ Fun fact about me: I love collecting cat postcards
+
 <br />
