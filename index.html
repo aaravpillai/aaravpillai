@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aarav.exe</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0f0f14;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #eaeaf0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 420px;
+  background: #16161d;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  position: relative;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #7aa2f7;
+}
+
+.typewriter {
+  min-height: 120px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: #7aa2f7;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #5a82e0;
+}
+
+.choice-buttons button {
+  margin: 8px 6px 0 0;
+  background: #2a2a36;
+}
+
+.choice-buttons button:hover {
+  background: #3b3b4d;
+}
+
+.footer {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>hi there 👋</h1>
+  <div id="text" class="typewriter"></div>
+
+  <div id="choices" class="choice-buttons"></div>
+
+  <button id="nextBtn">continue</button>
+
+  <div class="footer">interactive github intro</div>
+</div>
+
+<script>
+const textEl = document.getElementById("text");
+const nextBtn = document.getElementById("nextBtn");
+const choicesEl = document.getElementById("choices");
+
+let stage = 0;
+
+const content = [
+`i currently run an independent research lab called qinārā ai.
+
+i previously worked as an associate lecturer at the ual creative computing institute, facilitating lab sessions and code walkthroughs.`,
+
+`my practice focuses on building creative ml models; and examining how they can empower marginalised communities.
+
+i also critically interrogate hegemonic power structures embedded within technological systems.`,
+
+`outside of work i read philosophy, curate endless playlists, photograph beautiful places and people, and write poetry.`,
+
+`🌱 currently learning: p5.js for visual art  
+👯 looking to collaborate on: techno-orientalism in science fiction films  
+📫 reach me: aarav@qinaraailab.org  
+💬 talk to me about: user research or creative ai  
+⚡ fun fact: i collect cat postcards`
+];
+
+function typeWriter(text, i = 0) {
+  if (i < text.length) {
+    textEl.innerHTML += text.charAt(i);
+    setTimeout(() => typeWriter(text, i + 1), 15);
+  }
+}
+
+nextBtn.addEventListener("click", () => {
+  textEl.innerHTML = "";
+  choicesEl.innerHTML = "";
+
+  if (stage < content.length) {
+    typeWriter(content[stage]);
+    stage++;
+  } else {
+    launchMiniGame();
+  }
+});
+
+function launchMiniGame() {
+  textEl.innerHTML = "quick challenge: what do you want to explore?";
+  nextBtn.style.display = "none";
+
+  const options = [
+    "creative ml",
+    "critical tech theory",
+    "collaborate",
+    "cat lore"
+  ];
+
+  options.forEach(option => {
+    const btn = document.createElement("button");
+    btn.textContent = option;
+    btn.onclick = () => reveal(option);
+    choicesEl.appendChild(btn);
+  });
+}
+
+function reveal(choice) {
+  let response = "";
+
+  if (choice === "creative ml") {
+    response = "let's build strange, poetic models that shouldn't exist; but do.";
+  }
+  if (choice === "critical tech theory") {
+    response = "technology is never neutral. let's dissect it.";
+  }
+  if (choice === "collaborate") {
+    response = "email me. let's create something disruptive and tender.";
+  }
+  if (choice === "cat lore") {
+    response = "i once traveled 200km for a rare cat postcard.";
+  }
+
+  textEl.innerHTML = response;
+  choicesEl.innerHTML = "";
+}
+</script>
+
+</body>
+</html>
